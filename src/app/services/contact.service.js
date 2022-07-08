@@ -14,6 +14,7 @@ angular
       page: 1,
       hasMore: true,
       isLoading: false,
+      isDeleting: false,
       isSaving: false,
       persons: [],
       search: null,
@@ -74,7 +75,7 @@ angular
       removeContact: function(person) {
         var d = $q.defer();
         self.isDeleting = true;
-        name = person.name;
+        var name = person.name;
         person.$remove().then(function() {
           self.isDeleting = false;
           var index = self.persons.indexOf(person);
