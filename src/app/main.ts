@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { Contact } from "./services/contact.resource";
 import { ContactService } from "./services/contact.service";
+import { toasterServiceProvider } from './ajs-upgraded-providers';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { ContactService } from "./services/contact.service";
   providers: [
     Contact,
     ContactService,
+    toasterServiceProvider,
   ]
 })
 export class AppModule {
