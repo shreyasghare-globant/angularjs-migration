@@ -10,7 +10,7 @@ import { downgradeComponent } from "@angular/upgrade/static";
 import { ContactService } from "../services/contact.service";
 
 @Component({
-  selector: "ccCard",
+  selector: "card",
   template: `
 <div class="col-md-6">
   <div class="well well-sm">
@@ -69,7 +69,7 @@ export class CardComponent {
 
 angular
   .module("codecraft")
-  .directive('ccCard', downgradeComponent({
+  .directive('card', downgradeComponent({
     component: CardComponent,
     inputs: ['user']
   }));
