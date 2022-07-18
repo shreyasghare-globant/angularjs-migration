@@ -11,7 +11,7 @@ export let PersonListComponent = {
 	     infinite-scroll-distance="1"
 			>
 		<cc-card ng-repeat="person in $ctrl.contacts.persons track by person.id"
-				     user="person" >
+				     [user]="person" >
 		</cc-card>
 	</div >
 	<div ng-show="$ctrl.contacts.persons.length == 0 && !$ctrl.contacts.isLoading" >

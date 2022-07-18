@@ -10,6 +10,8 @@ import { ContactService } from "./services/contact.service";
 import { toasterServiceProvider } from "./ajs-upgraded-providers";
 import { SearchComponent } from "./components/search.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { DefaultImagePipe } from './pipes/default-image.pipe';
+import { CardComponent } from './components/card.component';
 
 @NgModule({
   imports: [
@@ -25,10 +27,14 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     toasterServiceProvider
   ],
   declarations: [
-    SearchComponent
+    SearchComponent,
+    DefaultImagePipe,
+    CardComponent
   ],
   entryComponents: [
-    SearchComponent
+    // if we are using components in Angular JS then we need to add those here in entryComponents.
+    SearchComponent,
+    CardComponent
   ]
 })
 export class AppModule {

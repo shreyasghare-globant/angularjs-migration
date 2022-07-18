@@ -13,6 +13,7 @@ import './app.main';
 import './services';
 import './filters';
 import './components';
+import './pipes';
 import './app.routes';
 
 import './polyfills.ts';
