@@ -12,6 +12,7 @@ import { SearchComponent } from "./components/search.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { CardComponent } from './components/card.component';
+import { SpinnerComponent } from './components/spinner.component';
 
 @NgModule({
   imports: [
@@ -29,12 +30,14 @@ import { CardComponent } from './components/card.component';
   declarations: [
     SearchComponent,
     DefaultImagePipe,
-    CardComponent
+    CardComponent,
+    SpinnerComponent
   ],
   entryComponents: [
     // if we are using components in Angular JS then we need to add those here in entryComponents.
     SearchComponent,
-    CardComponent
+    CardComponent,
+    SpinnerComponent
   ]
 })
 export class AppModule {
