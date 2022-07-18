@@ -1,40 +1,45 @@
 import * as angular from 'angular';
 
+import {
+	Inject,
+	Component,
+} from "@angular/core";
 
-export let PersonListComponent = {
-  selector: 'personList',
-  template: `
+import { downgradeComponent } from "@angular/upgrade/static";
+import { ContactService } from "../services/contact.service";
+
+@Component({
+	selector: 'personList',
+	template: `
 <div class="col-md-12" >
 	<div class="row"
-	     infinite-scroll="$ctrl.contacts.loadMore()"
-	     infinite-scroll-immediate-check="false"
-	     infinite-scroll-distance="1"
+		infiniteScroll
+    	[infiniteScrollDistance]="2"
+		[immediateCheck]="false"
+		[infiniteScrollThrottle]="100"
+		(scrolled)="contacts.loadMore()"
 			>
-		<card ng-repeat="person in $ctrl.contacts.persons track by person.id"
-				     [user]="person" >
+		<card  *ngFor="let person of contacts.persons"
+			[user]="person" >
 		</card>
 	</div >
-	<div ng-show="$ctrl.contacts.persons.length == 0 && !$ctrl.contacts.isLoading" >
+	<div *ngIf="contacts.persons.length == 0 && !contacts.isLoading">
 		<div class="alert alert-info" >
-			<p class="text-center" >No results found for search term '{{ $ctrl.search }}'</p >
+			<p class="text-center" >No results found for search term '{{ contacts.search }}'</p >
 		</div >
 	</div >
-	<spinner [is-loading]="$ctrl.contacts.isLoading"
-	            message="Loading..." >
+	<spinner [isLoading]="contacts.isLoading" 
+		message="Loading..." >
 	</spinner >
 </div >
-`,
-  bindings: {},
-  controller: class PersonListController {
-    public contacts = null;
-
-    constructor(ContactService) {
-      this.contacts = ContactService;
-    }
-  }
-};
+`})
+export class PersonListComponent {
+	constructor( @Inject(ContactService) public contacts: ContactService) {
+	}
+}
 
 angular
     .module('codecraft')
-    .component(PersonListComponent.selector, PersonListComponent); 
-    
+    .directive("personList", downgradeComponent({
+        component: PersonListComponent
+    }));

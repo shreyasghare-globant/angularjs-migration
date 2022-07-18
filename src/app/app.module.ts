@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { CardComponent } from './components/card.component';
 import { SpinnerComponent } from './components/spinner.component';
+import { PersonListComponent } from './components/person-list.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { SpinnerComponent } from './components/spinner.component';
     UpgradeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule    
+    ReactiveFormsModule,
+    InfiniteScrollModule,
   ],
   providers: [
     Contact,
@@ -31,13 +34,15 @@ import { SpinnerComponent } from './components/spinner.component';
     SearchComponent,
     DefaultImagePipe,
     CardComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PersonListComponent
   ],
   entryComponents: [
     // if we are using components in Angular JS then we need to add those here in entryComponents.
     SearchComponent,
     CardComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PersonListComponent
   ]
 })
 export class AppModule {
